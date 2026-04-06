@@ -4,11 +4,11 @@ require("dotenv").config();
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "http://localhost:3000",
+    baseUrl: process.env.FRONTEND_URL || "http://localhost:3000",
     setupNodeEvents(on, config) {
       config.env = config.env || {};
-      config.env.frontendUrl = "http://localhost:3000";
-      config.env.backendUrl = "http://localhost:5000";
+      config.env.frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+      config.env.backendUrl = process.env.BACKEND_URL || "http://localhost:5000";
 
       return config;
     },
