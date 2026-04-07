@@ -2,8 +2,10 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
 };
 
+const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
+
 async function request(path, options = {}) {
-  const response = await fetch(path, {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
     headers: {
       ...DEFAULT_HEADERS,
